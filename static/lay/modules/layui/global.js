@@ -155,8 +155,10 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
 
         //搜索组件
         form.on('select(component)', function (data) {
-            var value = data.value;
-            location.href = /^\//.test(value) ? value : ('/doc/' + value);
+            var value = data.value;///layui/doc/element/anim.html
+            let href = window.location.href;
+            let url = new URL(href);
+            top.window.location.href = url.origin + "/layui/doc/" + value;
         });
     }();
 
