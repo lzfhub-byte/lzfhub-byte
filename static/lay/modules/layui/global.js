@@ -663,7 +663,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             DemoCode.val()
             , '<body>'
             , global.preview
-            , '\n<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>'
+            , '\n<script src="../../../../layui/dist/layui.js" charset="utf-8"></script>'
             , '\n<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->'
             , $('#LAY_democodejs').html()
             , '\n</body>\n</html>'

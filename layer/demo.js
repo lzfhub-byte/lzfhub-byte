@@ -584,7 +584,7 @@ window.paysentsin = function(){
         {
           "alt": "layer友情打赏",
           "pid": 666, //图片id
-          "src": "//res.layui.com/images/pay/layer.jpg", //原图地址
+          "src": "images/pay/tong.jpg", //原图地址
           "thumb": "" //缩略图地址
         }
       ]
