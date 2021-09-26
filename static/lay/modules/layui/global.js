@@ -15,6 +15,10 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
 
         , $win = $(window), $body = $('body');
 
+    ;!function () {
+        $(".fly-footer").remove();
+    }();
+
     //ban iframe
     ; !function () { self !== parent && (location.href = "//www.baidu.com/") }();
 
@@ -301,7 +305,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
         if (!(browser === 'chrome' || browser === 'firefox')) return;
         if (!elemNavTop[0]) return;
 
-        $.get('//fly.layui.com/cross/tg/', {
+        $.get('../cross/tg/', {
             classname: 'topnav'
         }, function (data) {
             data = data || [];
@@ -320,7 +324,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
 
     //弹出公告
     ; !function () {
-        $.get('//fly.layui.com/cross/tg/', {
+        $.get('../cross/tg/', {
             classname: 'popup'
         }, function (data) {
             data = data || [];
@@ -463,18 +467,14 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
     (function () {
         var elemDowns = $('.site-showdowns');
         //获取下载数
-        if (elemDowns[0]) {
-            $.get('//fly.layui.com/cross/handle?id=10&type=find', function (res) {
-                elemDowns.html(res.number);
-            }, 'jsonp');
-        }
+        elemDowns.html('123456');
 
         //记录下载
         $('.site-down').on('click', function (e) {
             var othis = $(this)
                 , local = layui.data('layui')
                 , setHandle = function () {
-                    $.get('//fly.layui.com/cross/handle?id=10', function () { }, 'jsonp');
+
                 };
             if (!local.disclaimer) {
                 e.preventDefault();
@@ -707,7 +707,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
                 layer.photos({
                     photos: {
                         "data": [{
-                            "src": "//cdn.layui.com/upload/2018_4/168_1522515820513_397.png",
+                            "src": "../upload/2018_4/168_1522515820513_397.png",
                         }]
                     }
                     , anim: 2
