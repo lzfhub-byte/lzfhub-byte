@@ -16,7 +16,8 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
         , $win = $(window), $body = $('body');
 
     ;!function () {
-        $(".fly-footer").remove();
+        $(".fly-footer").html("");
+        $(".layui-footer").html("");
     }();
 
     //ban iframe
@@ -246,55 +247,51 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
         var noticeElem = $('.site-notice');
         if (device.mobile || !noticeElem[0]) return;
 
-        $.get('//fly.layui.com/cross/tg/', {
-            classname: 'toptg'
-        }, function (data) {
-            data = data || [];
-            data = layui.sort(data, 'sort', true); //优先级排序
+        let data =  [];
+        data = layui.sort(data, 'sort', true); //优先级排序
 
-            var tpl = ['{{# if(d.length > 0){ }}'
-                , '<div class="layui-carousel" id="layui-spm-event-parter" lay-filter="site-top-carousel">'
-                , '<div carousel-item>'
-                , '{{# layui.each(d, function(index, v){ '
-                , 'var tg = v.ad ? "tg" : "";'
-                , 'var style = v.tipsCss || "";'
-                , '}}'
-                , '<div>'
-                , '<a href="{{ v.url }}" target="_blank" class="{{ tg }} tg-{{ v.key }}" data-tips="{{ v.tips }}">'
-                , '<cite style="{{ style }}">{{ v.title }} {{# if(v.hot){ }}<span class="layui-badge-dot" style="margin-top: -5px;"></span>{{# } }}</cite>'
-                , '</a>'
-                , '<style>'
-                , '{{# if(v.ad){ }} .site-notice a.tg-{{ v.key }} cite{padding-right:25px;} {{# } }}'
-                , '{{# if(v.ad){ }}.site-notice a.tg-{{ v.key }}:after{content:"{{ v.ad }}"} {{# } }}'
-                , '</style>'
-                , '</div>'
-                , '{{# }); }}'
-                , '</div>'
-                , '</div>'
-                , '{{# } }}'].join('');
+        var tpl = ['{{# if(d.length > 0){ }}'
+            , '<div class="layui-carousel" id="layui-spm-event-parter" lay-filter="site-top-carousel">'
+            , '<div carousel-item>'
+            , '{{# layui.each(d, function(index, v){ '
+            , 'var tg = v.ad ? "tg" : "";'
+            , 'var style = v.tipsCss || "";'
+            , '}}'
+            , '<div>'
+            , '<a href="{{ v.url }}" target="_blank" class="{{ tg }} tg-{{ v.key }}" data-tips="{{ v.tips }}">'
+            , '<cite style="{{ style }}">{{ v.title }} {{# if(v.hot){ }}<span class="layui-badge-dot" style="margin-top: -5px;"></span>{{# } }}</cite>'
+            , '</a>'
+            , '<style>'
+            , '{{# if(v.ad){ }} .site-notice a.tg-{{ v.key }} cite{padding-right:25px;} {{# } }}'
+            , '{{# if(v.ad){ }}.site-notice a.tg-{{ v.key }}:after{content:"{{ v.ad }}"} {{# } }}'
+            , '</style>'
+            , '</div>'
+            , '{{# }); }}'
+            , '</div>'
+            , '</div>'
+            , '{{# } }}'].join('');
 
-            laytpl(tpl).render(data, function (html) {
-                var elem = '.site-notice .layui-carousel';
-                noticeElem.html(html);
+        laytpl(tpl).render(data, function (html) {
+            var elem = '.site-notice .layui-carousel';
+            noticeElem.html(html);
 
-                //轮播实例
-                carousel.render({
-                    elem: elem
-                    , width: '100%' //设置容器宽度
-                    , height: '100%'
-                    , arrow: 'none' //始终显示箭头
-                    , indicator: 'none' //指示器位置
-                    , anim: 'fade' //切换动画方式
-                    , interval: 5000 //自动切换的时间间隔
-                });
-
-                notice(data[0], $(elem).children('div').children('div').eq(0).find('a'));
-                carousel.on('change(site-top-carousel)', function (obj) {
-                    notice(data[obj.index], obj.item.find('a'));
-                });
-
+            //轮播实例
+            carousel.render({
+                elem: elem
+                , width: '100%' //设置容器宽度
+                , height: '100%'
+                , arrow: 'none' //始终显示箭头
+                , indicator: 'none' //指示器位置
+                , anim: 'fade' //切换动画方式
+                , interval: 5000 //自动切换的时间间隔
             });
-        }, 'jsonp');
+
+            notice(data[0], $(elem).children('div').children('div').eq(0).find('a'));
+            carousel.on('change(site-top-carousel)', function (obj) {
+                notice(data[obj.index], obj.item.find('a'));
+            });
+
+        });
     }();
 
     //头部动态导航
@@ -305,64 +302,55 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
         if (!(browser === 'chrome' || browser === 'firefox')) return;
         if (!elemNavTop[0]) return;
 
-        $.get('../cross/tg/', {
-            classname: 'topnav'
-        }, function (data) {
-            data = data || [];
-            data = data[0] || {};
+        let data =  [];
+        data = data[0] || {};
 
-            var content = data.content;
-            if (!content) return;
+        var content = data.content;
+        if (!content) return;
 
-            elemNavTop.append(content);
+        elemNavTop.append(content);
 
-            elemNavTop.find('.layui-nav-bar').remove();
-            elemNavTop.find('.layui-nav-item').off('mouseenter').off('mouseleave')
-            element.render('nav');
-        }, 'jsonp');
+        elemNavTop.find('.layui-nav-bar').remove();
+        elemNavTop.find('.layui-nav-item').off('mouseenter').off('mouseleave')
+        element.render('nav');
     }();
 
     //弹出公告
     ; !function () {
-        $.get('../cross/tg/', {
-            classname: 'popup'
-        }, function (data) {
-            data = data || [];
-            data = data[0] || {};
+        let data =  [];
+        data = data[0] || {};
 
-            var content = data.content;
-            if (!content) return;
+        var content = data.content;
+        if (!content) return;
 
-            var hasClickNotice = local.popup_notice && new Date().getTime() - local.popup_notice < (data.tipsInterval || 1000 * 60 * 60 * 24 * 3);
+        var hasClickNotice = local.popup_notice && new Date().getTime() - local.popup_notice < (data.tipsInterval || 1000 * 60 * 60 * 24 * 3);
 
-            if (hasClickNotice) return;
+        if (hasClickNotice) return;
 
-            setTimeout(function () {
-                layer.open({
-                    type: 1
-                    , title: data.title || '公告'
-                    , area: device.mobile ? ['90%', '90%'] : ['800px', '520px']
-                    , shade: false
-                    //,offset: 'b'
-                    , id: 'LAY_Notice' //设定一个id，防止重复弹出
-                    , skin: 'site-popup-notice'
-                    , resize: false
-                    , content: content
-                    , success: function (layero, index) {
-                        layero.find('a').on('click', function () {
-                            layer.close(index);
-                        });
-                    }
-                    , end: function () {
-                        layui.data('layui', {
-                            key: 'popup_notice'
-                            , value: new Date().getTime()
-                        });
-                    }
-                });
-            }, 500);
-
-        }, 'jsonp');
+        setTimeout(function () {
+            layer.open({
+                type: 1
+                , title: data.title || '公告'
+                , area: device.mobile ? ['90%', '90%'] : ['800px', '520px']
+                , shade: false
+                //,offset: 'b'
+                , id: 'LAY_Notice' //设定一个id，防止重复弹出
+                , skin: 'site-popup-notice'
+                , resize: false
+                , content: content
+                , success: function (layero, index) {
+                    layero.find('a').on('click', function () {
+                        layer.close(index);
+                    });
+                }
+                , end: function () {
+                    layui.data('layui', {
+                        key: 'popup_notice'
+                        , value: new Date().getTime()
+                    });
+                }
+            });
+        }, 500);
 
     }();
 
