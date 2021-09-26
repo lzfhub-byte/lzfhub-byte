@@ -330,7 +330,7 @@ layui.use(function(){ //亦可加载特定模块：layui.use(['layer', 'laydate'
   table.render({
     elem: '#demo'
     ,height: 420
-    ,url: '/demo/table/user/' //数据接口
+    ,url: 'data/data.json' //数据接口
     ,title: '用户表'
     ,page: true //开启分页
     ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
@@ -536,7 +536,6 @@ window.global = {
   }()
 };
 </script>
-<script async="" src="../pagead/js/adsbygoogle.js"></script>
 <div class="site-tree-mobile layui-hide">
   <i class="layui-icon layui-icon-spread-left"></i>
 </div>
@@ -548,16 +547,6 @@ layui.config({
   base: '../static/lay/modules/layui/'
   ,version: '1632428048260'
 }).use('global');
-</script>
- 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
 </script>
 
 </div>
