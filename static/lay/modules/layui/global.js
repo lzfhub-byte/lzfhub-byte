@@ -163,7 +163,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             var value = data.value;///layui/doc/element/anim.html
             let href = window.location.href;
             let url = new URL(href);
-            top.window.location.href = url.origin + "/doc/" + value;
+            top.window.location.href = url.origin + "/layui/doc/" + value;
         });
     }();
 
@@ -616,8 +616,9 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             html = html.replace(/script/gi, "layscrlayipttag");
             demoCodes.value = html.length > 100 * 1000 ? '<h1>卧槽，你的代码过长</h1>' : html;
 
-            demoForm.action = '/api/runHtml/';
-            demoForm.submit();
+            // demoForm.action = '/api/runHtml/';
+            // demoForm.submit();
+            // $("#LAY_demo")[0].contentDocument.write(demoCodes.value)
 
         };
     $('#LAY_demo_run').on('click', runCodes), runCodes();

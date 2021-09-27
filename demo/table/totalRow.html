@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui table模块，将已知数据生成数据表格 - 在线演示</title>
+    <title>Layui table模块，开启合计行 - 在线演示</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,25 +12,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <script>
-        ;!function () {
-            self !== parent && (location.href = "//www.baidu.com/")
-        }();
+        ;!function(){self!==parent&&(location.href="//www.baidu.com/")}();
     </script>
-    <link rel="stylesheet" href="../../layui/dist/css/layui.css" media="all">
-    <link rel="stylesheet" href="../../static/css/global.css" media="all">
-    <style>
-        .layui-body {
-            overflow-y: scroll
-        }
-    </style>
+    <link rel="stylesheet" href="../../layui/dist/css/layui.css?t=1632659138225"  media="all">
+    <link rel="stylesheet" href="../../static/css/global.css?t=1632659138225-19" media="all">
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
 
 
-    <div class="layui-header header header-demo" autumn="">
+    <div class="layui-header header header-demo">
         <div class="layui-fluid">
-            <a class="logo" href="../../index.html">
+            <a class="logo" href="/">
                 <img src="../../static/images/layui/logo.png" alt="layui">
             </a>
             <div class="layui-form layui-hide-xs component" lay-filter="LAY-site-header-component"></div>
@@ -48,9 +43,8 @@
                         周边
                     </a>
                     <dl class="layui-nav-child layui-nav-child-c">
-                        <dd class="layui-hide-sm layui-show-xs" lay-unselect="">
-                            <a href="javascript:window.open('https://gitee.com/sentsin/layui/issues');" target="_blank"
-                               rel="nofollow">问题反馈</a>
+                        <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+                            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
                             <hr>
                         </dd>
 
@@ -60,8 +54,7 @@
                 </li>
 
                 <li class="layui-nav-item layui-hide-xs">
-                    <a href="javascript:window.open('https://gitee.com/sentsin/layui/issues');" target="_blank"
-                       rel="nofollow">反馈</a>
+                    <a href="//gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
                 </li>
             </ul>
         </div>
@@ -155,7 +148,7 @@
                             </a>
                         </dd>
                         <dd class="layui-this">
-                            <a href="../table.html">
+                            <a href="">
                                 数据表格
                             </a>
                         </dd>
@@ -229,6 +222,8 @@
                 </li>
 
                 <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+
+                <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
             </ul>
 
         </div>
@@ -236,17 +231,9 @@
 
     <style>
         body .site-demo-title,
-        body .layui-layout-admin .site-demo {
-            left: 360px
-        }
-
-        .layui-layout-admin .site-demo-body {
-            top: 107px;
-        }
-
-        body .site-demo-code {
-            left: 160px;
-        }
+        body .layui-layout-admin .site-demo{left: 360px}
+        .layui-layout-admin .site-demo-body{top: 107px;}
+        body .site-demo-code{left: 160px;}
     </style>
     <div class="layui-side layui-side-child">
         <div class="layui-side-scroll">
@@ -256,104 +243,79 @@
                     <a class="layui-nav-title" class="layui-nav-title" href="../table.html">简单数据表格</a>
                 </li>
                 <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/auto.html');">列宽自动分配<span
-                            class="layui-badge-dot"></span></a>
+                    <a class="layui-nav-title" href="../table/auto.html">列宽自动分配<span class="layui-badge-dot"></span></a>
                 </li>
 
                 <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/data.html');">赋值已知数据</a>
+                    <a class="layui-nav-title" href="../table/data.html">赋值已知数据</a>
                 </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/static.html');">转化静态表格</a>
+                <li class="layui-nav-item">
+                    <a class="layui-nav-title" href="../table/static.html">转化静态表格</a>
                 </li>
 
                 <hr>
                 <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/page.html');">开启分页</a>
+                    <a class="layui-nav-title" href="../table/page.html">开启分页</a>
+                </li>
+                <li class="layui-nav-item  ">
+                    <a class="layui-nav-title" href="../table/resetPage.html">自定义分页</a>
                 </li>
                 <li class="layui-nav-item ">
-                    <a class="layui-nav-title" href="resetPage.html">自定义分页</a>
+                    <a class="layui-nav-title" href="../table/toolbar.html">开启头部工具栏<span class="layui-badge-dot"></span></a>
                 </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/toolbar.html');">开启头部工具栏<span
-                            class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/totalRow.html');">开启合计行<span
-                            class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/checkbox.html');">开启复选框</a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/radio.html');">开启单选框<span
-                            class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/cellEdit.html');">开启单元格编辑</a>
-                </li>
-                <hr>
-
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/form.html');">加入表单元素</a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/style.html');">设置单元格样式</a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/fixed.html');">固定列</a>
-                </li>
-
-                <hr>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/operate.html');">数据操作</a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/parseData.html');">解析任意数据格式<span
-                            class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/onrow.html');">行事件<span
-                            class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/reload.html');">数据表格的重载</a>
-                </li>
-                <hr>
-
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/height.html');">高度最大化适应</a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/initSort.html');">设置初始排序</a>
-                </li>
-
-
-                <li class="layui-nav-item ">
-                    <a class="layui-nav-title"
-                       href="javascript:window.open('https://www.layui.com/demo/table/cellEvent.html');">单元格事件</a>
-                </li>
-
                 <li class="layui-nav-item layui-this">
-                    <a class="layui-nav-title" href="">复杂表头</a>
+                    <a class="layui-nav-title" href="../table/totalRow.html">开启合计行<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/checkbox.html">开启复选框</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/radio.html">开启单选框<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/cellEdit.html">开启单元格编辑</a>
+                </li>
+                <hr>
+
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/form.html">加入表单元素</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/style.html">设置单元格样式</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/fixed.html">固定列</a>
+                </li>
+
+                <hr>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/operate.html">数据操作</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/parseData.html">解析任意数据格式<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/onrow.html">行事件<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/reload.html">数据表格的重载</a>
+                </li>
+                <hr>
+
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/height.html">高度最大化适应</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/initSort.html">设置初始排序</a>
+                </li>
+
+
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/cellEvent.html">单元格事件</a>
+                </li>
+
+                <li class="layui-nav-item ">
+                    <a class="layui-nav-title" href="../table/thead.html">复杂表头</a>
                 </li>
 
                 <hr>
@@ -373,63 +335,21 @@
         <div class="layui-body layui-tab-content site-demo site-demo-body">
             <div class="layui-tab-item layui-show">
                 <div class="layui-main">
-
                     <div id="LAY_preview">
 
-                        常用两级表头：
+                        <table class="layui-hide" id="test" lay-filter="test"></table>
 
-                        <table class="layui-table"
-                               lay-data="{width:800, url:'/test/table/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
-                                <th lay-data="{field:'username', width:150}" rowspan="2">联系人</th>
-                                <th lay-data="{align:'center'}" colspan="3">地址</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="2">金额</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}"
-                                    rowspan="2">操作
-                                </th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province', width:120}">省</th>
-                                <th lay-data="{field:'city', width:120}">市</th>
-                                <th lay-data="{field:'zone', width:200}">区</th>
-                            </tr>
-                            </thead>
-                        </table>
-                        更多级表头（可以无限极）：
-                        <table class="layui-table"
-                               lay-data="{url:'/test/table/demo2.json?v=3', cellMinWidth: 80, page: true}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{field:'username', width:80}" rowspan="3">联系人</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="3">金额</th>
-                                <th lay-data="{align:'center'}" colspan="5">地址1</th>
-                                <th lay-data="{align:'center'}" colspan="2">地址2</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}"
-                                    rowspan="3">操作
-                                </th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                                <th lay-data="{align:'center'}" colspan="3">详细</th>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'street'}" rowspan="2">街道</th>
-                                <th lay-data="{field:'address'}">小区</th>
-                                <th lay-data="{field:'house'}">单元</th>
-                            </tr>
-                            </thead>
-                        </table>
-
-                        <script type="text/html" id="barDemo">
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">按钮1</a>
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">按钮2</a>
+                        <script type="text/html" id="toolbarDemo">
+                            <div class="layui-btn-container">
+                                <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+                                <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+                                <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+                            </div>
                         </script>
-                        <p style="color: #999">注：上述例子读取的均是静态模拟数据</p>
+                        <script type="text/html" id="barDemo">
+                            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </script>
 
                     </div>
 
@@ -438,15 +358,17 @@
                     </blockquote>
                     <div style="margin: 15px 0 100px; padding-bottom: 100px;">
                         <!-- 通用-970*90 -->
-                        <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px"
-                             data-ad-client="ca-pub-6111334333458862" data-ad-slot="6835627838"></ins>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:970px;height:90px"
+                             data-ad-client="ca-pub-6111334333458862"
+                             data-ad-slot="6835627838"></ins>
                     </div>
                 </div>
             </div>
 
 
             <div class="layui-tab-item">
-<textarea class="layui-border-box site-demo-text site-demo-code" id="LAY_democode" spellcheck="false" readonly="">
+<textarea class="layui-border-box site-demo-text site-demo-code" id="LAY_democode" spellcheck="false" readonly>
 <!DOCTYPE html>
 <html>
 <head>
@@ -455,7 +377,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="../layui/dist/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../layui/dist/css/layui.css"  media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 </textarea>
@@ -465,6 +387,7 @@
             <div class="layui-tab-item">
                 <div class="layui-main">
                     <p></p>
+
 
 
                     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
@@ -480,18 +403,16 @@
 
     <div class="layui-footer footer footer-demo">
         <p>
-            Copyright &copy; 2021 <a href="../../index.html">layui.com</a> MIT Licensed</p>
+            Copyright &copy; 2021 <a href="/">layui.com</a> MIT Licensed</p>
         <p>
-            <a href="../../about/disclaimer.html" target="_blank">免责声明</a>
-            <a href="../../about/relatedlinks.html" target="_blank">友链</a>
-            <a href="javascript:;" site-event="weixinmp">公众号</a>
-            <a target="_blank"
-               href="javascript:window.open('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010902000274');"
-               rel="nofollow">
-                <img src="../../upload/2021_8/168_1628847893037_87773.png">
+            <a href="/about/disclaimer.html" target="_blank">免责声明</a>
+            <a href="/about/relatedlinks.html" target="_blank">友链</a>
+            <a href="javascript:;"  site-event="weixinmp">公众号</a>
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010902000274"  rel="nofollow">
+                <img src="//cdn.layui.com/upload/2021_8/168_1628847893037_87773.png">
                 赣公网安备 36010902000274号
             </a>
-            <a href="javascript:window.open('https://beian.miit.gov.cn/');" target="_blank" rel="nofollow">赣ICP备13006272号</a>
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号</a>
         </p>
         <div class="site-union">
             <p class="site-union-desc">
@@ -500,13 +421,11 @@
         </span>
             </p>
             <p>
-                <a href="javascript:window.open('https://console.upyun.com/register/?invite=SJ0wu6g2-');"
-                   target="_blank" rel="nofollow" sponsor="upyun">
-                    <img src="../../static/images/other/upyun.png" alt="upyun">
+                <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun">
+                    <img src="../../static/images/other/upyun.png?t=1" alt="upyun">
                 </a>
-                <a href="javascript:window.open('https://www.maoyun.com/?from=layui');" target="_blank" rel="nofollow"
-                   sponsor="maoyun">
-                    <img src="../../upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
+                <a href="https://www.maoyun.com/?from=layui" target="_blank" rel="nofollow" sponsor="maoyun">
+                    <img src="//cdn.layui.com/upload/2019_5/168_1559291577683_9348.png" alt="maoyun">
                 </a>
             </p>
         </div>
@@ -514,42 +433,77 @@
     <script>
         window.global = {
             pageType: 'demo'
-            , preview: function () {
+            ,preview: function(){
                 var preview = document.getElementById('LAY_preview');
                 return preview ? preview.innerHTML : '';
             }()
         };
     </script>
-    <script async="" src="../../pagead/js/adsbygoogle.js"></script>
     <div class="site-tree-mobile layui-hide">
         <i class="layui-icon layui-icon-spread-left"></i>
     </div>
     <div class="site-mobile-shade"></div>
 
-    <script src="../../layui/dist/layui.js"></script>
+    <script src="../../layui/dist/layui.js?t=1632659138225" charset="utf-8"></script>
     <script>
         layui.config({
-            base: '../static/lay/modules/layui/'
-            , version: '1632428048355'
+            base: '../../static/lay/modules/layui/'
+            ,version: '1632659138225'
         }).use('global');
     </script>
-
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+    
 
 </div>
 <div id="LAY_democodejs">
+
     <script>
-        layui.use('table', function () {
+        layui.use('table', function(){
             var table = layui.table;
 
+            //温馨提示：默认由前端自动合计当前行数据。从 layui 2.5.6 开始： 若接口直接返回了合计行数据，则优先读取接口合计行数据。
+            //详见：https://www.layui.com/doc/modules/table.html#totalRow
+            table.render({
+                elem: '#test'
+                ,url:'../data/demo1.json'
+                ,toolbar: '#toolbarDemo'
+                ,title: '用户数据表'
+                ,totalRow: true
+                ,cols: [[
+                    {type: 'checkbox', fixed: 'left'}
+                    ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计'}
+                    ,{field:'username', title:'用户名', width:120, edit: 'text'}
+                    ,{field:'email', title:'邮箱', width:150, edit: 'text', templet: function(res){
+                            return '<em>'+ res.email +'</em>'
+                        }}
+                    ,{field:'experience', title:'积分', width:80, sort: true, totalRow: true}
+                    ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
+                    ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
+                    ,{field:'sign', title:'签名'}
+                    ,{field:'city', title:'城市', width:100}
+                    ,{field:'ip', title:'IP', width:120}
+                    ,{field:'joinTime', title:'加入时间', width:120}
+                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+                ]]
+                ,page: true
+            });
+
+            //工具栏事件
+            table.on('toolbar(test)', function(obj){
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch(obj.event){
+                    case 'getCheckData':
+                        var data = checkStatus.data;
+                        layer.alert(JSON.stringify(data));
+                        break;
+                    case 'getCheckLength':
+                        var data = checkStatus.data;
+                        layer.msg('选中了：'+ data.length + ' 个');
+                        break;
+                    case 'isAll':
+                        layer.msg(checkStatus.isAll ? '全选': '未全选')
+                        break;
+                };
+            });
         });
     </script>
 </div>
