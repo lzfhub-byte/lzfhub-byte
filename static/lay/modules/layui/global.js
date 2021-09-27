@@ -163,7 +163,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             var value = data.value;///layui/doc/element/anim.html
             let href = window.location.href;
             let url = new URL(href);
-            top.window.location.href = url.origin + "/layui/doc/" + value;
+            top.window.location.href = url.origin + "/doc/" + value;
         });
     }();
 
