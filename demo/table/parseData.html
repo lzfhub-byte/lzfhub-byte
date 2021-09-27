@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui table模块，将已知数据生成数据表格 - 在线演示</title>
+    <title>Layui table模块，解析任意数据格式 - 在线演示</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,9 +16,6 @@
     </script>
     <link rel="stylesheet" href="../../layui/dist/css/layui.css?t=1632659138225"  media="all">
     <link rel="stylesheet" href="../../static/css/global.css?t=1632659138225-19" media="all">
-    <style>
-        .layui-body{overflow-y: scroll}
-    </style>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -294,7 +291,7 @@
                 <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/operate.html">数据操作</a>
                 </li>
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item layui-this">
                     <a class="layui-nav-title" href="../table/parseData.html">解析任意数据格式<span class="layui-badge-dot"></span></a>
                 </li>
                 <li class="layui-nav-item ">
@@ -317,7 +314,7 @@
                     <a class="layui-nav-title" href="../table/cellEvent.html">单元格事件</a>
                 </li>
 
-                <li class="layui-nav-item layui-this">
+                <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/thead.html">复杂表头</a>
                 </li>
 
@@ -338,57 +335,12 @@
         <div class="layui-body layui-tab-content site-demo site-demo-body">
             <div class="layui-tab-item layui-show">
                 <div class="layui-main">
-
                     <div id="LAY_preview">
+                        <blockquote class="layui-elem-quote layui-text">
+                            尽管本示例中的原始数据：<a href="../data/demo3.json" target="_blank">/data/demo3.json</a>，并不符合 table 组件默认规定的数据格式，但从 layui 2.4.0 开始，新增的 parseData 回调可以将原始的任意格式的数据重新解析成 table 组件规定的数据格式。具体可以点击上方查看代码。
+                        </blockquote>
 
-                        常用两级表头：
-
-                        <table class="layui-table" lay-data="{width:800, url:'../data/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
-                                <th lay-data="{field:'username', width:150}" rowspan="2">联系人</th>
-                                <th lay-data="{align:'center'}" colspan="3">地址</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="2">金额</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="2">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province', width:120}">省</th>
-                                <th lay-data="{field:'city', width:120}">市</th>
-                                <th lay-data="{field:'zone', width:200}">区</th>
-                            </tr>
-                            </thead>
-                        </table>
-                        更多级表头（可以无限极）：
-                        <table class="layui-table" lay-data="{url:'../data/demo2.json?v=3', cellMinWidth: 80, page: true}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{field:'username', width:80}" rowspan="3">联系人</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="3">金额</th>
-                                <th lay-data="{align:'center'}" colspan="5">地址1</th>
-                                <th lay-data="{align:'center'}" colspan="2">地址2</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="3">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                                <th lay-data="{align:'center'}" colspan="3">详细</th>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'street'}" rowspan="2">街道</th>
-                                <th lay-data="{field:'address'}">小区</th>
-                                <th lay-data="{field:'house'}">单元</th>
-                            </tr>
-                            </thead>
-                        </table>
-
-                        <script type="text/html" id="barDemo">
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">按钮1</a>
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">按钮2</a>
-                        </script>
-                        <p style="color: #999">注：上述例子读取的均是静态模拟数据</p>
+                        <table class="layui-hide" id="test" lay-filter="test"></table>
 
                     </div>
 
@@ -456,7 +408,7 @@
         <div class="site-union">
             <p class="site-union-desc">
         <span>
-          
+
         </span>
             </p>
             <p>
@@ -491,14 +443,46 @@
         }).use('global');
     </script>
 
-  
+   
 
 </div>
 <div id="LAY_democodejs">
+
     <script>
         layui.use('table', function(){
             var table = layui.table;
 
+            table.render({
+                elem: '#test'
+                ,url:'../data/demo3.json'
+                ,toolbar: true
+                ,title: '用户数据表'
+                ,totalRow: true
+                ,cols: [[
+                    {field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计行'}
+                    ,{field:'username', title:'用户名', width:120, edit: 'text'}
+                    ,{field:'email', title:'邮箱', width:150, edit: 'text'}
+                    ,{field:'experience', title:'积分', width:100, sort: true, totalRow: true}
+                    ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
+                    ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
+                    ,{field:'sign', title:'签名'}
+                    ,{field:'city', title:'城市', width:100}
+                    ,{field:'ip', title:'IP', width:120}
+                    ,{field:'joinTime', title:'加入时间', width:120}
+                ]]
+                ,page: true
+                ,response: {
+                    statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
+                }
+                ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
+                    return {
+                        "code": res.status, //解析接口状态
+                        "msg": res.message, //解析提示文本
+                        "count": res.total, //解析数据长度
+                        "data": res.rows.item //解析数据列表
+                    };
+                }
+            });
         });
     </script>
 </div>

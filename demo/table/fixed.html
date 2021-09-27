@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui table模块，将已知数据生成数据表格 - 在线演示</title>
+    <title>Layui table模块，固定列 - 在线演示</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,11 +14,8 @@
     <script>
         ;!function(){self!==parent&&(location.href="//www.baidu.com/")}();
     </script>
-    <link rel="stylesheet" href="../../layui/dist/css/layui.css?t=1632659138225"  media="all">
-    <link rel="stylesheet" href="../../static/css/global.css?t=1632659138225-19" media="all">
-    <style>
-        .layui-body{overflow-y: scroll}
-    </style>
+    <link rel="stylesheet" href="../../layui/dist/css/layui.css?t=1632659138211"  media="all">
+    <link rel="stylesheet" href="../../static/css/global.css?t=1632659138211-19" media="all">
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -266,7 +263,7 @@
                 <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/toolbar.html">开启头部工具栏<span class="layui-badge-dot"></span></a>
                 </li>
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item">
                     <a class="layui-nav-title" href="../table/totalRow.html">开启合计行<span class="layui-badge-dot"></span></a>
                 </li>
                 <li class="layui-nav-item ">
@@ -286,7 +283,7 @@
                 <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/style.html">设置单元格样式</a>
                 </li>
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item  layui-this">
                     <a class="layui-nav-title" href="../table/fixed.html">固定列</a>
                 </li>
 
@@ -317,7 +314,7 @@
                     <a class="layui-nav-title" href="../table/cellEvent.html">单元格事件</a>
                 </li>
 
-                <li class="layui-nav-item layui-this">
+                <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/thead.html">复杂表头</a>
                 </li>
 
@@ -338,57 +335,9 @@
         <div class="layui-body layui-tab-content site-demo site-demo-body">
             <div class="layui-tab-item layui-show">
                 <div class="layui-main">
-
                     <div id="LAY_preview">
 
-                        常用两级表头：
-
-                        <table class="layui-table" lay-data="{width:800, url:'../data/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
-                                <th lay-data="{field:'username', width:150}" rowspan="2">联系人</th>
-                                <th lay-data="{align:'center'}" colspan="3">地址</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="2">金额</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="2">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province', width:120}">省</th>
-                                <th lay-data="{field:'city', width:120}">市</th>
-                                <th lay-data="{field:'zone', width:200}">区</th>
-                            </tr>
-                            </thead>
-                        </table>
-                        更多级表头（可以无限极）：
-                        <table class="layui-table" lay-data="{url:'../data/demo2.json?v=3', cellMinWidth: 80, page: true}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{field:'username', width:80}" rowspan="3">联系人</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="3">金额</th>
-                                <th lay-data="{align:'center'}" colspan="5">地址1</th>
-                                <th lay-data="{align:'center'}" colspan="2">地址2</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="3">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                                <th lay-data="{align:'center'}" colspan="3">详细</th>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'street'}" rowspan="2">街道</th>
-                                <th lay-data="{field:'address'}">小区</th>
-                                <th lay-data="{field:'house'}">单元</th>
-                            </tr>
-                            </thead>
-                        </table>
-
-                        <script type="text/html" id="barDemo">
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">按钮1</a>
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">按钮2</a>
-                        </script>
-                        <p style="color: #999">注：上述例子读取的均是静态模拟数据</p>
+                        <table class="layui-hide" id="test"></table>
 
                     </div>
 
@@ -483,22 +432,42 @@
     </div>
     <div class="site-mobile-shade"></div>
 
-    <script src="../../layui/dist/layui.js?t=1632659138225" charset="utf-8"></script>
+    <script src="../../layui/dist/layui.js?t=1632659138211" charset="utf-8"></script>
     <script>
         layui.config({
             base: '../../static/lay/modules/layui/'
-            ,version: '1632659138225'
+            ,version: '1632659138211'
         }).use('global');
     </script>
 
-  
+    
 
 </div>
 <div id="LAY_democodejs">
+
     <script>
         layui.use('table', function(){
             var table = layui.table;
 
+            table.render({
+                elem: '#test'
+                ,url:'../data/data.json'
+                ,width: 892
+                ,height: 330
+                ,cols: [[
+                    {type:'checkbox', fixed: 'left'}
+                    ,{field:'id', width:80, title: 'ID', sort: true, fixed: 'left'}
+                    ,{field:'username', width:80, title: '用户名'}
+                    ,{field:'sex', width:80, title: '性别', sort: true}
+                    ,{field:'city', width:80, title: '城市'}
+                    ,{field:'sign', width: 219, title: '签名'}
+                    ,{field:'experience', width:80, title: '积分', sort: true}
+                    ,{field:'score', width:80, title: '评分', sort: true}
+                    ,{field:'classify', width:80, title: '职业'}
+                    ,{field:'wealth', width:120, title: '财富', sort: true, fixed: 'right'}
+                ]]
+                ,page: true
+            });
         });
     </script>
 </div>

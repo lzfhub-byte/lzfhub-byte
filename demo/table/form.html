@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui table模块，将已知数据生成数据表格 - 在线演示</title>
+    <title>Layui table模块，加入表单元素 - 在线演示</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,9 +16,6 @@
     </script>
     <link rel="stylesheet" href="../../layui/dist/css/layui.css?t=1632659138225"  media="all">
     <link rel="stylesheet" href="../../static/css/global.css?t=1632659138225-19" media="all">
-    <style>
-        .layui-body{overflow-y: scroll}
-    </style>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -280,7 +277,7 @@
                 </li>
                 <hr>
 
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item layui-this">
                     <a class="layui-nav-title" href="../table/form.html">加入表单元素</a>
                 </li>
                 <li class="layui-nav-item ">
@@ -317,7 +314,7 @@
                     <a class="layui-nav-title" href="../table/cellEvent.html">单元格事件</a>
                 </li>
 
-                <li class="layui-nav-item layui-this">
+                <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/thead.html">复杂表头</a>
                 </li>
 
@@ -338,57 +335,20 @@
         <div class="layui-body layui-tab-content site-demo site-demo-body">
             <div class="layui-tab-item layui-show">
                 <div class="layui-main">
-
                     <div id="LAY_preview">
 
-                        常用两级表头：
+                        <table class="layui-hide" id="test"></table>
 
-                        <table class="layui-table" lay-data="{width:800, url:'../data/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
-                                <th lay-data="{field:'username', width:150}" rowspan="2">联系人</th>
-                                <th lay-data="{align:'center'}" colspan="3">地址</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="2">金额</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="2">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province', width:120}">省</th>
-                                <th lay-data="{field:'city', width:120}">市</th>
-                                <th lay-data="{field:'zone', width:200}">区</th>
-                            </tr>
-                            </thead>
-                        </table>
-                        更多级表头（可以无限极）：
-                        <table class="layui-table" lay-data="{url:'../data/demo2.json?v=3', cellMinWidth: 80, page: true}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{field:'username', width:80}" rowspan="3">联系人</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="3">金额</th>
-                                <th lay-data="{align:'center'}" colspan="5">地址1</th>
-                                <th lay-data="{align:'center'}" colspan="2">地址2</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="3">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                                <th lay-data="{align:'center'}" colspan="3">详细</th>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'street'}" rowspan="2">街道</th>
-                                <th lay-data="{field:'address'}">小区</th>
-                                <th lay-data="{field:'house'}">单元</th>
-                            </tr>
-                            </thead>
-                        </table>
-
-                        <script type="text/html" id="barDemo">
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">按钮1</a>
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">按钮2</a>
+                        <script type="text/html" id="switchTpl">
+                            <!-- 这里的 checked 的状态只是演示 -->
+                            <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.id == 10003 ? 'checked' : '' }}>
                         </script>
-                        <p style="color: #999">注：上述例子读取的均是静态模拟数据</p>
+
+                        <script type="text/html" id="checkboxTpl">
+                            <!-- 这里的 checked 的状态只是演示 -->
+                            <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{ d.id == 10006 ? 'checked' : '' }}>
+                        </script>
+
 
                     </div>
 
@@ -491,14 +451,42 @@
         }).use('global');
     </script>
 
-  
+
 
 </div>
 <div id="LAY_democodejs">
+
     <script>
         layui.use('table', function(){
-            var table = layui.table;
+            var table = layui.table
+                ,form = layui.form;
 
+            table.render({
+                elem: '#test'
+                ,url:'../data/data.json'
+                ,cellMinWidth: 80
+                ,cols: [[
+                    {type:'numbers'}
+                    ,{type: 'checkbox'}
+                    ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
+                    ,{field:'username', title:'用户名', templet: '#usernameTpl'}
+                    ,{field:'city', title:'城市'}
+                    ,{field:'wealth', title: '财富', minWidth:120, sort: true}
+                    ,{field:'sex', title:'性别', width:85, templet: '#switchTpl', unresize: true}
+                    ,{field:'lock', title:'是否锁定', width:110, templet: '#checkboxTpl', unresize: true}
+                ]]
+                ,page: true
+            });
+
+            //监听性别操作
+            form.on('switch(sexDemo)', function(obj){
+                layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            });
+
+            //监听锁定操作
+            form.on('checkbox(lockDemo)', function(obj){
+                layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            });
         });
     </script>
 </div>

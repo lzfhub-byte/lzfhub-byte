@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui table模块，将已知数据生成数据表格 - 在线演示</title>
+    <title>Layui table模块，数据表格的高度最大化适应 - 在线演示</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,9 +16,6 @@
     </script>
     <link rel="stylesheet" href="../../layui/dist/css/layui.css?t=1632659138225"  media="all">
     <link rel="stylesheet" href="../../static/css/global.css?t=1632659138225-19" media="all">
-    <style>
-        .layui-body{overflow-y: scroll}
-    </style>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -305,7 +302,7 @@
                 </li>
                 <hr>
 
-                <li class="layui-nav-item ">
+                <li class="layui-nav-item layui-this">
                     <a class="layui-nav-title" href="../table/height.html">高度最大化适应</a>
                 </li>
                 <li class="layui-nav-item ">
@@ -317,7 +314,7 @@
                     <a class="layui-nav-title" href="../table/cellEvent.html">单元格事件</a>
                 </li>
 
-                <li class="layui-nav-item layui-this">
+                <li class="layui-nav-item ">
                     <a class="layui-nav-title" href="../table/thead.html">复杂表头</a>
                 </li>
 
@@ -341,54 +338,19 @@
 
                     <div id="LAY_preview">
 
-                        常用两级表头：
-
-                        <table class="layui-table" lay-data="{width:800, url:'../data/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
+                        <table class="layui-table" lay-data="{height: 'full-200', cellMinWidth: 80, page: true, limit:30, url:'../data/data.json'}">
                             <thead>
                             <tr>
-                                <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
-                                <th lay-data="{field:'username', width:150}" rowspan="2">联系人</th>
-                                <th lay-data="{align:'center'}" colspan="3">地址</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="2">金额</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="2">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province', width:120}">省</th>
-                                <th lay-data="{field:'city', width:120}">市</th>
-                                <th lay-data="{field:'zone', width:200}">区</th>
+                                <th lay-data="{type:'checkbox'}">ID</th>
+                                <th lay-data="{field:'id', width:100, sort: true}">ID</th>
+                                <th lay-data="{field:'username', width:100}">用户名</th>
+                                <th lay-data="{field:'sex', width:100, sort: true}">性别</th>
+                                <th lay-data="{field:'sign', minWidth: 150}">签名</th>
+                                <th lay-data="{field:'experience', sort: true, align: 'right'}">积分</th>
+                                <th lay-data="{field:'score', sort: true, minWidth: 100, align: 'right'}">评分</th>
                             </tr>
                             </thead>
                         </table>
-                        更多级表头（可以无限极）：
-                        <table class="layui-table" lay-data="{url:'../data/demo2.json?v=3', cellMinWidth: 80, page: true}">
-                            <thead>
-                            <tr>
-                                <th lay-data="{field:'username', width:80}" rowspan="3">联系人</th>
-                                <th lay-data="{field:'amount', width:120}" rowspan="3">金额</th>
-                                <th lay-data="{align:'center'}" colspan="5">地址1</th>
-                                <th lay-data="{align:'center'}" colspan="2">地址2</th>
-                                <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}" rowspan="3">操作</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                                <th lay-data="{align:'center'}" colspan="3">详细</th>
-                                <th lay-data="{field:'province'}" rowspan="2">省</th>
-                                <th lay-data="{field:'city'}" rowspan="2">市</th>
-                            </tr>
-                            <tr>
-                                <th lay-data="{field:'street'}" rowspan="2">街道</th>
-                                <th lay-data="{field:'address'}">小区</th>
-                                <th lay-data="{field:'house'}">单元</th>
-                            </tr>
-                            </thead>
-                        </table>
-
-                        <script type="text/html" id="barDemo">
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">按钮1</a>
-                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">按钮2</a>
-                        </script>
-                        <p style="color: #999">注：上述例子读取的均是静态模拟数据</p>
 
                     </div>
 
@@ -478,6 +440,7 @@
             }()
         };
     </script>
+
     <div class="site-tree-mobile layui-hide">
         <i class="layui-icon layui-icon-spread-left"></i>
     </div>
@@ -498,6 +461,7 @@
     <script>
         layui.use('table', function(){
             var table = layui.table;
+
 
         });
     </script>
