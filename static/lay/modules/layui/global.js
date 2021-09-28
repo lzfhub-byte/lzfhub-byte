@@ -121,7 +121,7 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             , '<option value="element/tab.html">tabs 选项卡</option>'
             , '<option value="element/progress.html">progress 进度条</option>'
             , '<option value="element/panel.html">panel 面板 / card</option>'
-            , '<option value="element/collapse.html">collapse 折叠面板/手风琴</option>'
+            , '<option value="element/panel.html">collapse 折叠面板/手风琴</option>'
             , '<option value="element/table.html">table 表格元素</option>'
             , '<option value="element/badge.html">badge 徽章</option>'
             , '<option value="element/timeline.html">timeline 时间线</option>'
