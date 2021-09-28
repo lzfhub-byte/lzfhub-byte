@@ -618,7 +618,8 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
 
             // demoForm.action = '/api/runHtml/';
             // demoForm.submit();
-            // $("#LAY_demo")[0].contentDocument.write(demoCodes.value)
+            $("#LAY_demo").attr(`data:text/html,${demoCodes.value}`)
+            // $("#LAY_demo")[0].contentDocument.write()
 
         };
     $('#LAY_demo_run').on('click', runCodes), runCodes();
