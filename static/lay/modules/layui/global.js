@@ -612,8 +612,8 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             if (!iframeElem[0]) return;
             var html = editor.val();
 
-            html = html.replace(/=/gi, "layequalsign");
-            html = html.replace(/script/gi, "layscrlayipttag");
+            //html = html.replace(/=/gi, "layequalsign");
+            //html = html.replace(/script/gi, "layscrlayipttag");
             demoCodes.value = html.length > 100 * 1000 ? '<h1>卧槽，你的代码过长</h1>' : html;
 
             // demoForm.action = '/api/runHtml/';
