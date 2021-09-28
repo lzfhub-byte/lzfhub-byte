@@ -463,15 +463,7 @@ layui.config({
 }).use('global');
 </script>
  
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+
 
 </div>
 <div id="LAY_democodejs">
@@ -697,7 +689,7 @@ layui.use(['dropdown', 'util', 'layer', 'table'], function(){
   // dropdown 在表格中的应用
   table.render({
     elem: '#test-dropdown-table'
-    ,url: '/test/table/demo5.json'
+    ,url: 'data/demo5.json'
     ,title: '用户数据表'
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
