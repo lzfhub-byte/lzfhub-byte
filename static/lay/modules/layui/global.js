@@ -149,9 +149,6 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
             , '<option value="modules/flow.html">flow 信息流/图片懒加载</option>'
             , '<option value="modules/util.html">util 工具集</option>'
             , '<option value="modules/code.html">code 代码文本行修饰</option>'
-
-            , '<option value="/layim/">layim</option>'
-            , '<option value="/layuiadmin/">layuiadmin</option>'
             , '</select>'
             , '<i class="layui-icon layui-icon-search"></i>'].join(''));
 
