@@ -108,7 +108,7 @@
         <ul>
           
           
-         <li>
+         <li id='needRemove'>
               你也可以单独打开管理界面大布局的演示页面：
               <a class="layui-btn layui-btn-normal" href="layout-admin.html" target="_blank">单独打开</a>
             </li>
@@ -172,15 +172,13 @@ layui.use(['element', 'layer', 'util'], function(){
   });
   
 });
+ 
+ ;!function(){
+     if(!(new URL(document.URL).search == '?from=demo')){
+        $('#needRemove').remove();
+     }
+ }()
 </script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+
 </body>
 </html>
