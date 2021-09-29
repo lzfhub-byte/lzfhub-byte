@@ -150,7 +150,11 @@ layui.use(['element', 'layer', 'util'], function(){
   ,layer = layui.layer
   ,util = layui.util
   ,$ = layui.$;
-  
+  ;!function(){
+     if(!(new URL(document.URL).search == '?from=demo')){
+        $('#needRemove').remove();
+     }
+ }();
   //头部事件
   util.event('lay-header-event', {
     //左侧菜单事件
@@ -173,11 +177,7 @@ layui.use(['element', 'layer', 'util'], function(){
   
 });
  
- ;!function(){
-     if(!(new URL(document.URL).search == '?from=demo')){
-        $('#needRemove').remove();
-     }
- }()
+ 
 </script>
 
 </body>
