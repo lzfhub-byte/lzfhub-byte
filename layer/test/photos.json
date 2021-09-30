@@ -1,0 +1,26 @@
+{
+  "status": 1,
+  "msg": "",
+  "title": "JSON请求的相册",
+  "id": 8,
+  "start": 0,
+  "data": [
+    {
+      "alt": "layer",
+      "pid": 109,
+      "src": "../static/images/fly/fly.jpg",
+      "thumb": ""
+    },
+    {
+      "alt": "星空如此深邃",
+      "pid": 113,
+      "src": "../../static/images/sentsin/night.gif",
+      "thumb": ""
+    },{
+      "alt": "说好的，一起 Fly",
+      "pid": 110,
+      "src": "../static/images/fly/fly.jpg",
+      "thumb": ""
+    }
+  ]
+}

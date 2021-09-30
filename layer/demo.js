@@ -181,7 +181,7 @@ $('#chutiyan>a').on('click', function(){
         shadeClose: true,
         shade: 0.8,
         area: ['380px', '90%'],
-        content: 'mobile/' //iframe的url
+        content: 'mobile/mobile.html' //iframe的url
       }); 
     break;
     
@@ -365,7 +365,7 @@ $('.layer-demolist').on('click', function(){
         area: ['700px', '450px'],
         fixed: false, //不固定
         maxmin: true,
-        content: 'test/iframe.html'
+        content: '../hello/test/iframe.html'
       });
     break;
     case 8:
@@ -464,7 +464,7 @@ $('.layer-demolist').on('click', function(){
       //弹出即全屏
       var index = layer.open({
         type: 2,
-        content: 'https://fly.layui.com/jump/alyhot/',
+        content: 'https://www.icourse163.org/',
         area: ['320px', '195px'],
         maxmin: true
       });
@@ -496,22 +496,22 @@ $('.layer-demolist').on('click', function(){
 gather.downs = $('#downs');
 gather.downs [0] && function(){
   
-  //获取下载数
-  $.get('//fly.layui.com/cross/handle?id=1&type=find', function(res){
-    gather.downs.html(res.number);
-  }, 'jsonp');
-
-  
-  //获取并记录关注次数
-  $.get('//fly.layui.com/cross/handle?id=3', function(res){
-    $('#sees').html(res.number);
-  }, 'jsonp');
+  // //获取下载数
+  // $.get('//fly.layui.com/cross/handle?id=1&type=find', function(res){
+  //   gather.downs.html(res.number);
+  // }, 'jsonp');
+  //
+  //
+  // //获取并记录关注次数
+  // $.get('//fly.layui.com/cross/handle?id=3', function(res){
+  //   $('#sees').html(res.number);
+  // }, 'jsonp');
 }();
 
 //记录下载
-$('.layer_down').on('click',function(){
-  $.get('//fly.layui.com/cross/handle?id=1', function(){},'jsonp');
-});
+// $('.layer_down').on('click',function(){
+//   $.get('//fly.layui.com/cross/handle?id=1', function(){},'jsonp');
+// });
 
 //API页
 gather.api = $('.layer-api');
