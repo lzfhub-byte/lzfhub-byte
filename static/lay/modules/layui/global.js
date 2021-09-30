@@ -18,6 +18,18 @@ layui.define(['code', 'element', 'table', 'util', 'carousel', 'laytpl'], functio
     ;!function () {
         $(".fly-footer").html("");
         $(".layui-footer").html("");
+        $('a').each(function () {
+            $(this).click(function (event) {
+                let $this = $(this);
+                let href = $(this).attr("href");
+                if(href && href.startsWith('javascript')){
+                    event.stopPropagation();
+                    event.preventDefault();
+                    href = href.substring(href.indexOf(":")+1);
+                    eval(href)
+        }
+    })
+})
     }();
 
     //ban iframe
